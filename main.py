@@ -8,6 +8,7 @@ import random
 from src.Relationship import get_relationship
 import zipfile
 from src.NearestNeighbour import run
+from src.MergeVerticals import merge_verticals
 
 def zipdir():
     zipf = zipfile.ZipFile('outputs/output.zip', 'w', zipfile.ZIP_DEFLATED)
@@ -42,7 +43,8 @@ print("Initial size: " + str(len(photos)))
 
 # Let's get started
 
-slides = run(photos)
+slides = merge_verticals(photos)
+slides = run(slides)
 
 f = open("outputs/"+inSet+".txt", "w")
 f.write(str(len(slides)) + "\n")
