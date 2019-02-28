@@ -17,8 +17,6 @@ def merge_verticals(photos):
     verticals = sorted(verticals, key=lambda x: len(x.tags), reverse=True)
 
     print("Merging verticals...")
-    print(len(verticals))
-
     while len(verticals) > 0:
         currentPhoto = verticals[0]
         verticals.remove(currentPhoto)
