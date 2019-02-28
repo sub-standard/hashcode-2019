@@ -30,7 +30,7 @@ while len(photos) > 0:
         slideshow.append(best_img)
         photos.remove(best_img)
 
-f = open("out.txt", "w")
+f = open("outputs/out.txt", "w")
 f.write(str(len(slideshow)) + "\n")
 for slide in slideshow:
     f.write(str(slide.id) + "\n")
