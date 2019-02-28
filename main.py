@@ -7,6 +7,7 @@ from src.Importer import Importer
 import random
 from src.Relationship import get_relationship
 import zipfile
+from src.NearestNeighbour import run
 
 def zipdir():
     # ziph is zipfile handle
@@ -35,9 +36,14 @@ inputs = {
 
 inSet = ""
 inFile = ""
-if sys.argv[1] in inputs.keys():
+if len(sys.argv) >= 2 and sys.argv[1] in inputs.keys():
     inSet = sys.argv[1]
     inFile = "inputs/" + inputs[inSet]
+else:
+    print("Please specify a input set from the following:")
+    for i in inputs.keys():
+        print(str(i), end=" ")
+    sys.exit()
 
 importer = Importer(inFile)
 photos = importer.import_data_set()
@@ -49,33 +55,11 @@ photos = sorted(photos, key=lambda x: len(x.tags), reverse=True)
 
 # Let's get started
 
-starting_item = random.choice(photos)
-while not starting_item.isHorizontal:
-    starting_item = random.choice(photos)
-
-photos.remove(starting_item)
-slideshow = [starting_item]
-
-print()
-while len(photos) > 0:
-    max_score = -1
-    best_img = None
-    for img in photos:
-        score = get_relationship(slideshow[-1].tags, img.tags)
-        if score > max_score:
-            best_img = img
-            max_score = score
-    if best_img is not None:
-        slideshow.append(best_img)
-        photos.remove(best_img)
-    else:
-        break
-    print("\rPhotos left: "+str(len(photos)), end="")
-print("\rDone")
+slides = run(photos)
 
 f = open("outputs/"+inSet+".txt", "w")
-f.write(str(len(slideshow)) + "\n")
-for slide in slideshow:
+f.write(str(len(slides)) + "\n")
+for slide in slides:
     f.write(str(slide.id) + "\n")
 f.close()
 
