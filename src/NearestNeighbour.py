@@ -14,7 +14,7 @@ def run(slides):
     slideshow = []
     slideshow.append(starting_item)
 
-    print()
+    print("Running slides...")
     while len(slides) > 0:
         max_score = -1
         best_img = None
@@ -34,7 +34,10 @@ def run(slides):
             slides.remove(best_img)
         else:
             break
-        print("\rSlides left: "+str(len(slides)) + "          ", end="")
+
+        length = len(slides)
+        if length % 50 == 0:
+            print("\rSlides left: "+str(length) + "          ", end="")
     print("\nDone")
 
     return slideshow

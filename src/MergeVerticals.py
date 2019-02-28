@@ -36,7 +36,10 @@ def merge_verticals(photos):
             verticals.remove(best_img)
         else:
             break
-        print("\rVerticals left: "+str(len(verticals)) + "          ", end="")
+
+        length = len(verticals)
+        if length % 50 == 0:
+            print("\rVerticals left: "+str(length) + "          ", end="")
     print("\nDone")
 
     return slides
