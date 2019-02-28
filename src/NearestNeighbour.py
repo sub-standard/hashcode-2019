@@ -4,9 +4,9 @@ import Random
 from Relationship import get_relationship
 
 importer = Importer("a_example")
-photos = importer.import_data_set();
+photos = importer.import_data_set()
 
-starting_item = Random.choice(photos);
+starting_item = Random.choice(photos)
 while not starting_item.isHorizontal:
     starting_item = Random.choice(photos)
 
@@ -16,8 +16,8 @@ slideshow = [starting_item]
 photos = [x for x in photos if x.isHorizontal]
 
 while len(photos) > 0:
-    max_score = -1;
-    best_img = None;
+    max_score = -1
+    best_img = None
     for img in photos:
         score = get_relationship(slideshow[-1].tags, img.tags)
         if score > max_score:
