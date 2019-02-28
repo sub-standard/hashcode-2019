@@ -3,6 +3,12 @@ import random
 from src.Relationship import get_relationship
 
 def run(photos):
+    # Sort and filter
+    photos = [x for x in photos if x.isHorizontal]
+    photos = sorted(photos, key=lambda x: len(x.tags), reverse=True)
+
+    print("Filtered size: " + str(len(photos)))
+
     max_diff = 2
     limit = 100000
     starting_item = photos[0]
