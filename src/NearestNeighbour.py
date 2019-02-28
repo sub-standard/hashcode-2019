@@ -26,7 +26,7 @@ def run(photos):
             photos.remove(best_img)
         else:
             break
-        print("\rPhotos left: "+str(len(photos)), end="")
-    print("\rDone")
+        print("\rPhotos left: "+str(len(photos)) + "          ", end="")
+    print("\nDone")
 
     return slideshow
