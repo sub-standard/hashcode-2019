@@ -7,8 +7,9 @@ from src.Importer import Importer
 import random
 from src.Relationship import get_relationship
 import zipfile
-from src.NearestNeighbour import run
+from src.Chaining import run
 from src.MergeVerticals import merge_verticals
+
 
 def zipdir():
     zipf = zipfile.ZipFile('outputs/output.zip', 'w', zipfile.ZIP_DEFLATED)
@@ -16,6 +17,7 @@ def zipdir():
         for file in files:
             zipf.write(os.path.join(root, file))
     zipf.write("main.py")
+
 
 inputs = {
     "a": "a_example.txt",
@@ -55,5 +57,3 @@ for slide in slides:
 f.close()
 
 zipdir()
-
-
