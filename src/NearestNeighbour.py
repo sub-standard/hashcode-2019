@@ -3,8 +3,8 @@ import random
 from src.Relationship import get_relationship
 
 def run(photos):
-    max_diff = 2
-    limit = 100000
+    max_diff = 4
+    limit = 1000
     starting_item = photos[0]
 
     photos.remove(starting_item)
@@ -15,11 +15,15 @@ def run(photos):
         max_score = -1
         best_img = None
         for i in range(len(photos)):
-            if len(photos[i].tags) - len(slideshow[-i].tags) > max_diff or i > limit:
+            #if abs(len(photos[i].tags) - len(slideshow[-1].tags) > max_diff) or i > limit:
+            if i > limit:
+                #print("current photo len",len(photos[i].tags))
+                #print("last slide len",len(slideshow[-1].tags))
+                #print("exit")
                 break
-            score = get_relationship(slideshow[-1].tags, img.tags)
+            score = get_relationship(slideshow[-1].tags, photos[i].tags)
             if score > max_score:
-                best_img = img
+                best_img = photos[i]
                 max_score = score
         if best_img is not None:
             slideshow.append(best_img)
@@ -27,6 +31,6 @@ def run(photos):
         else:
             break
         print("\rPhotos left: "+str(len(photos)), end="")
-    print("\rDone")
+    print("\nDone")
 
     return slideshow
