@@ -10,21 +10,11 @@ import zipfile
 from src.NearestNeighbour import run
 
 def zipdir():
-    # ziph is zipfile handle
     zipf = zipfile.ZipFile('outputs.zip', 'w', zipfile.ZIP_DEFLATED)
-
     for root, dirs, files in os.walk("src/"):
         for file in files:
             zipf.write(os.path.join(root, file))
     zipf.write("main.py")
-    # for root, dirs, files in os.walk(path):
-    #     for file in files:
-    #         filename, file_extension = os.path.splitext(file)
-    #         print(file_extension)
-    #         if file_extension is ".txt" or ".py":
-    #             print(root)
-    #             print(file)
-    #             zipf.write(os.path.join(root, file))
 
 inputs = {
     "a": "a_example.txt",
