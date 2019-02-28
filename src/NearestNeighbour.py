@@ -1,5 +1,6 @@
 from src.Photo import Photo
 import random
+from src.Slide import Slide
 from src.Relationship import get_relationship
 
 def run(photos):
@@ -14,7 +15,8 @@ def run(photos):
     starting_item = photos[0]
 
     photos.remove(starting_item)
-    slideshow = [starting_item]
+    slideshow = []
+    slideshow.append(Slide(starting_item))
 
     print()
     while len(photos) > 0:
@@ -32,7 +34,7 @@ def run(photos):
                 best_img = photos[i]
                 max_score = score
         if best_img is not None:
-            slideshow.append(best_img)
+            slideshow.append(Slide(best_img))
             photos.remove(best_img)
         else:
             break

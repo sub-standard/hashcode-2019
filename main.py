@@ -57,7 +57,7 @@ slides = run(photos)
 f = open("outputs/"+inSet+".txt", "w")
 f.write(str(len(slides)) + "\n")
 for slide in slides:
-    f.write(str(slide.id) + "\n")
+    f.write(slide.get_output_line() + "\n")
 f.close()
 
 zipdir()
