@@ -10,7 +10,7 @@ import zipfile
 from src.NearestNeighbour import run
 
 def zipdir():
-    zipf = zipfile.ZipFile('outputs.zip', 'w', zipfile.ZIP_DEFLATED)
+    zipf = zipfile.ZipFile('outputs/output.zip', 'w', zipfile.ZIP_DEFLATED)
     for root, dirs, files in os.walk("src/"):
         for file in files:
             zipf.write(os.path.join(root, file))
