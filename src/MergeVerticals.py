@@ -6,8 +6,10 @@ def merge_verticals(photos):
     slides = []
 
     slides = [Slide(x) for x in photos if x.isHorizontal]
+    print("Horizontal: " + str(len(slides)))
 
     verticals = [x for x in photos if not x.isHorizontal]
+    print("Vertical: " + str(len(verticals)))
 
     if len(verticals) == 0:
         return slides
