@@ -27,9 +27,10 @@ def merge_verticals(photos):
         for i in range(len(verticals)):
             if i > limit:
                 break
-            score = get_relationship(currentPhoto.tags, verticals[i].tags)
+            j = i - len(verticals)
+            score = get_relationship(currentPhoto.tags, verticals[j].tags)
             if score < min_score:
-                best_img = verticals[i]
+                best_img = verticals[j]
                 min_score = score
         if best_img is not None:
             slides.append(Slide(currentPhoto, best_img))
