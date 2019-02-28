@@ -1,4 +1,6 @@
+import sys
 from src.Slide import Slide
+from src.Relationship import get_relationship
 
 def merge_verticals(photos):
     slides = []
@@ -7,6 +9,34 @@ def merge_verticals(photos):
 
     verticals = [x for x in photos if not x.isHorizontal]
 
-    #
+    if len(verticals) == 0:
+        return slides
+
+    limit = 1000
+    # Sort and filter
+    verticals = sorted(verticals, key=lambda x: len(x.tags), reverse=True)
+
+    print("Merging verticals...")
+    print(len(verticals))
+
+    while len(verticals) > 0:
+        currentPhoto = verticals[0]
+        verticals.remove(currentPhoto)
+        min_score = sys.maxsize
+        best_img = None
+        for i in range(len(verticals)):
+            if i > limit:
+                break
+            score = get_relationship(currentPhoto.tags, verticals[i].tags)
+            if score < min_score:
+                best_img = verticals[i]
+                min_score = score
+        if best_img is not None:
+            slides.append(Slide(currentPhoto, best_img))
+            verticals.remove(best_img)
+        else:
+            break
+        print("\rVerticals left: "+str(len(verticals)) + "          ", end="")
+    print("\nDone")
 
     return slides

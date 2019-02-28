@@ -8,8 +8,6 @@ def run(slides):
     # Sort and filter
     slides = sorted(slides, key=lambda x: len(x.tags), reverse=True)
 
-    print("Filtered size: " + str(len(slides)))
-
     starting_item = slides[0]
 
     slides.remove(starting_item)
