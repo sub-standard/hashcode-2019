@@ -38,7 +38,7 @@ def merge_verticals(photos):
             break
 
         length = len(verticals)
-        if length % 50 == 0:
+        if length % 100 == 0:
             print("\rVerticals left: "+str(length) + "          ", end="")
     print("\nDone")
 
