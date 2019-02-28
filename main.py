@@ -26,10 +26,7 @@ else:
 importer = Importer(inFile)
 photos = importer.import_data_set()
 
-# Sort and filter
-photos = [x for x in photos if x.isHorizontal]
-photos = sorted(photos, key=lambda x: len(x.tags), reverse=True)
-
+print("Initial size: " + str(len(photos)))
 
 # Let's get started
 
