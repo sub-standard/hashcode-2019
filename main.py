@@ -32,6 +32,7 @@ slideshow = [starting_item]
 
 photos = [x for x in photos if x.isHorizontal]
 
+print()
 while len(photos) > 0:
     max_score = -1
     best_img = None
@@ -45,6 +46,8 @@ while len(photos) > 0:
         photos.remove(best_img)
     else:
         break
+    print("\rPhotos left: "+str(len(photos)), end="")
+print("\rDone")
 
 f = open("outputs/"+inSet+".txt", "w")
 f.write(str(len(slideshow)) + "\n")
