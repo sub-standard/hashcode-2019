@@ -44,6 +44,7 @@ print("Initial size: " + str(len(photos)))
 # Let's get started
 
 slides = merge_verticals(photos)
+print("Slides: " + str(len(slides)))
 slides = run(slides)
 
 f = open("outputs/"+inSet+".txt", "w")
