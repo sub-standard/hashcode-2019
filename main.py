@@ -1,10 +1,18 @@
 #!/bin/env python3
 
 import sys
+import os
 from src.Photo import Photo
 from src.Importer import Importer
 import random
 from src.Relationship import get_relationship
+import zipfile
+
+def zipdir(path):
+    # ziph is zipfile handle
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            zipfile.ZIP_DEFLATED.write(os.path.join(root, file))
 
 inputs = {
     "a": "a_example.txt",
@@ -54,3 +62,7 @@ f.write(str(len(slideshow)) + "\n")
 for slide in slideshow:
     f.write(str(slide.id) + "\n")
 f.close()
+
+zipdir("outputs/")
+
+
