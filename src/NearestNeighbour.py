@@ -19,7 +19,7 @@ while len(photos) > 0:
     max_score = -1;
     best_img = None;
     for img in photos:
-        score = get_relationship(slideshow[-1].tags,img.tags)
+        score = get_relationship(slideshow[-1].tags, img.tags)
         if score > max_score:
             best_img = img
             max_score = score
@@ -30,3 +30,8 @@ while len(photos) > 0:
 
 print(slideshow)
 
+f = open("out.txt", "w")
+f.write(len(slideshow) + "\n")
+for slide in slideshow:
+    f.write(slide.id + "\n")
+f.close()
