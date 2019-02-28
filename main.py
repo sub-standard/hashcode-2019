@@ -8,11 +8,22 @@ import random
 from src.Relationship import get_relationship
 import zipfile
 
-def zipdir(path):
+def zipdir():
     # ziph is zipfile handle
-    for root, dirs, files in os.walk(path):
+    zipf = zipfile.ZipFile('outputs.zip', 'w', zipfile.ZIP_DEFLATED)
+
+    for root, dirs, files in os.walk("src/"):
         for file in files:
-            zipfile.ZIP_DEFLATED.write(os.path.join(root, file))
+            zipf.write(os.path.join(root, file))
+    zipf.write("main.py")
+    # for root, dirs, files in os.walk(path):
+    #     for file in files:
+    #         filename, file_extension = os.path.splitext(file)
+    #         print(file_extension)
+    #         if file_extension is ".txt" or ".py":
+    #             print(root)
+    #             print(file)
+    #             zipf.write(os.path.join(root, file))
 
 inputs = {
     "a": "a_example.txt",
@@ -68,6 +79,6 @@ for slide in slideshow:
     f.write(str(slide.id) + "\n")
 f.close()
 
-zipdir("outputs/")
+zipdir()
 
 
