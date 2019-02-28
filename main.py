@@ -46,7 +46,7 @@ while len(photos) > 0:
     else:
         break
 
-f = open("outputs/"+inSet".txt", "w")
+f = open("outputs/"+inSet+".txt", "w")
 f.write(str(len(slideshow)) + "\n")
 for slide in slideshow:
     f.write(str(slide.id) + "\n")
