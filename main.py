@@ -4,7 +4,7 @@ from src.Importer import Importer
 
 importer = Importer("inputs/a_example.txt")
 
-photos = importer.importDataSet()
+photos = importer.import_data_set()
 
 for photo in photos:
     print(photo)
