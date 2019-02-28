@@ -117,3 +117,7 @@ dmypy.json
 
 # PDFs
 *.pdf
+
+# Editor/IDE
+.idea/
+.vscode/
