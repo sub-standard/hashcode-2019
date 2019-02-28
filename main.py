@@ -31,14 +31,19 @@ if sys.argv[1] in inputs.keys():
 importer = Importer(inFile)
 photos = importer.import_data_set()
 
+# Sort and filter
+photos = [x for x in photos if x.isHorizontal]
+photos = sorted(photos, key=lambda x: len(x.tags), reverse=True)
+
+
+# Let's get started
+
 starting_item = random.choice(photos)
 while not starting_item.isHorizontal:
     starting_item = random.choice(photos)
 
 photos.remove(starting_item)
 slideshow = [starting_item]
-
-photos = [x for x in photos if x.isHorizontal]
 
 print()
 while len(photos) > 0:
