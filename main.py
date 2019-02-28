@@ -33,7 +33,7 @@ while len(photos) > 0:
 print(slideshow)
 
 f = open("out.txt", "w")
-f.write(len(slideshow) + "\n")
+f.write(str(len(slideshow)) + "\n")
 for slide in slideshow:
-    f.write(slide.id + "\n")
+    f.write(str(slide.id) + "\n")
 f.close()
