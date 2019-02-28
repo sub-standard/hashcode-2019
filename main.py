@@ -14,9 +14,14 @@ inputs = {
 
 inSet = ""
 inFile = ""
-if sys.argv[1] in inputs.keys():
+if len(sys.argv) >= 2 and sys.argv[1] in inputs.keys():
     inSet = sys.argv[1]
     inFile = "inputs/" + inputs[inSet]
+else:
+    print("Please specify a input set from the following:")
+    for i in inputs.keys():
+        print(str(i), end=" ")
+    sys.exit()
 
 importer = Importer(inFile)
 photos = importer.import_data_set()
