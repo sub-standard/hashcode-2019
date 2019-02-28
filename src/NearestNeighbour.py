@@ -36,7 +36,7 @@ def run(slides):
             break
 
         length = len(slides)
-        if length % 50 == 0:
+        if length % 100 == 0:
             print("\rSlides left: "+str(length) + "          ", end="")
     print("\nDone")
 

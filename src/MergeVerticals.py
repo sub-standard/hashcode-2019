@@ -1,6 +1,6 @@
 import sys
 from src.Slide import Slide
-from src.Relationship import get_relationship
+from src.Relationship import get_num_intersection
 
 def merge_verticals(photos):
     slides = []
@@ -28,7 +28,7 @@ def merge_verticals(photos):
             if i > limit:
                 break
             j = i - len(verticals)
-            score = get_relationship(currentPhoto.tags, verticals[j].tags)
+            score = get_num_intersection(currentPhoto.tags, verticals[j].tags)
             if score < min_score:
                 best_img = verticals[j]
                 min_score = score
@@ -39,7 +39,7 @@ def merge_verticals(photos):
             break
 
         length = len(verticals)
-        if length % 50 == 0:
+        if length % 100 == 0:
             print("\rVerticals left: "+str(length) + "          ", end="")
     print("\nDone")
 
