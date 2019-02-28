@@ -1,6 +1,7 @@
 import Photo
 import Importer
 import Random
+from Relationship import get_relationship
 
 importer = Importer("a_example")
 photos = importer.importDataSet();
