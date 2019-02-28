@@ -1,11 +1,26 @@
 #!/bin/env python3
 
+import sys
 from src.Photo import Photo
 from src.Importer import Importer
 import random
 from src.Relationship import get_relationship
 
-importer = Importer("inputs/a_example.txt")
+inputs = {
+    "a": "a_example.txt",
+    "b": "b_lovely_landscapes.txt",
+    "c": "c_memorable_moments.txt",
+    "d": "d_pet_pictures.txt",
+    "e": "e_shiny_selfies.txt"
+}
+
+inSet = ""
+inFile = ""
+if sys.argv[1] in inputs.keys():
+    inSet = sys.argv[1]
+    inFile = "inputs/" + inputs[inSet]
+
+importer = Importer(inFile)
 photos = importer.import_data_set()
 
 starting_item = random.choice(photos)
@@ -30,7 +45,7 @@ while len(photos) > 0:
         slideshow.append(best_img)
         photos.remove(best_img)
 
-f = open("outputs/out.txt", "w")
+f = open("outputs/"+inSet".txt", "w")
 f.write(str(len(slideshow)) + "\n")
 for slide in slideshow:
     f.write(str(slide.id) + "\n")
