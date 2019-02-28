@@ -3,9 +3,9 @@ import random
 from src.Relationship import get_relationship
 
 def run(photos):
-    starting_item = random.choice(photos)
-    while not starting_item.isHorizontal:
-        starting_item = random.choice(photos)
+    max_diff = 2
+    limit = 100000
+    starting_item = photos[0]
 
     photos.remove(starting_item)
     slideshow = [starting_item]
@@ -14,7 +14,9 @@ def run(photos):
     while len(photos) > 0:
         max_score = -1
         best_img = None
-        for img in photos:
+        for i in range(len(photos)):
+            if len(photos[i].tags) - len(slideshow[-i].tags) > max_diff or i > limit:
+                break
             score = get_relationship(slideshow[-1].tags, img.tags)
             if score > max_score:
                 best_img = img
