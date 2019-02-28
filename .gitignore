@@ -121,3 +121,6 @@ dmypy.json
 # Editor/IDE
 .idea/
 .vscode/
+
+# Outputs
+outputs/*.txt
