@@ -23,7 +23,7 @@ class Link():
 
 
 def run(photos):
-    limit = 10
+    limit = 100
     # Sort and filter
     photos = sorted(photos, key=lambda x: len(x.tags), reverse=True)
 
@@ -79,7 +79,7 @@ def run(photos):
             temp_links.remove(best_link)
             new_links.append(current_link)
 
-        links = deepcopy(new_links)
+        links = new_links
 
         print("\nLinks left: "+str(len(links)) + "          ")
 
