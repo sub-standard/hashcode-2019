@@ -40,10 +40,11 @@ while len(photos) > 0:
         if score > max_score:
             best_img = img
             max_score = score
-            break
     if best_img is not None:
         slideshow.append(best_img)
         photos.remove(best_img)
+    else:
+        break
 
 f = open("outputs/"+inSet".txt", "w")
 f.write(str(len(slideshow)) + "\n")
