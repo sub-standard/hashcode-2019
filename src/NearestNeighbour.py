@@ -1,13 +1,13 @@
-import Photo
-import Importer
+from src.Photo import Photo
+from src.Importer import Importer
 import Random
 from Relationship import get_relationship
 
 importer = Importer("a_example")
-photos = importer.importDataSet();
+photos = importer.import_data_set();
 
 starting_item = Random.choice(photos);
-while not starting_img_item.isHorizontal:
+while not starting_item.isHorizontal:
     starting_item = Random.choice(photos)
 
 photos.remove(starting_item)
