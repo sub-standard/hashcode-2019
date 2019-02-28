@@ -18,7 +18,7 @@ class Importer:
 
                 lines = iter(content)
                 next(lines)
-                counter: int = 1
+                counter: int = 0
                 for line in lines:
                     line = line.strip()
                     parts = line.split(" ")
